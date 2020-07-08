@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | canoypa.github.io</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: 16px "Noto Sans";
+      color: #757575;
+    }
+
+    main {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #9e9e9e;
+      margin: 4px;
+      border-radius: 4px;
+      color: #757575;
+      text-decoration: none;
+      outline: none;
+      transition: background-color 0.1s ease-out;
+    }
+    .link::after {
+      content: "";
+      height: 7px;
+      width: 100%;
+      border-top: 1px solid #9e9e9e;
+      background-image: repeating-linear-gradient(
+        45deg,
+        #9e9e9e,
+        #9e9e9e 2px,
+        transparent 2px,
+        transparent 6px
+      );
+    }
+    .link:hover,
+    .link:focus {
+      background-color: #eeeeee;
+    }
+    .link > span {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px 8px 60px;
+      min-height: 54px;
+      background-position: 16px 11px;
+      background-size: 32px;
+      background-repeat: no-repeat;
+    }
+  </style>
+  <body>
+    <main>
+      <a href="https://github.com/canoypa" class="link">
+        <span style="background-image: url(./assets/logos/github.png);">
+          GitHub
+        </span>
+      </a>
+      <a href="https://www.npmjs.com/~cano" class="link">
+        <span style="background-image: url(./assets/logos/npm.png);">
+          NPM
+        </span>
+      </a>
+      <a href="https://qiita.com/canoypa" class="link">
+        <span style="background-image: url(./assets/logos/twitter.png);">
+          Twitter
+        </span>
+      </a>
+      <a href="https://twitter.com/canoypa" class="link">
+        <span style="background-image: url(./assets/logos/qiita.png);">
+          Qiita
+        </span>
+      </a>
+    </main>
+  </body>
+</html>
