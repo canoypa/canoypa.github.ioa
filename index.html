@@ -30,34 +30,34 @@
       min-height: 100vh;
     }
 
-    .link-wrapper {
+    .link {
+      display: inline-block;
       margin: 4px;
       height: 64px;
       overflow: hidden;
+      color: #757575;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
     }
-    .link {
-      display: block;
+    .link-wrapper {
       border: 1px solid #9e9e9e;
       height: 64px;
       border-radius: 4px;
       overflow: hidden;
-      color: #757575;
       background-color: #fff;
-      text-decoration: none;
       outline: none;
       transition-property: background-color, transform, height;
       transition-duration: 0.1s;
       transition-timing-function: ease-out;
-      user-select: none;
-      cursor: pointer;
     }
-    .link:hover,
-    .link:focus {
+    .link-wrapper:hover,
+    .link-wrapper:focus {
       height: 62px;
       transform: translateY(2px);
       background-color: #ede7f6;
     }
-    .link:active {
+    .link-wrapper:active {
       height: 56px;
       transform: translateY(8px);
     }
@@ -73,7 +73,7 @@
       height: 32px;
       pointer-events: none;
     }
-    .link::after {
+    .link-wrapper::after {
       content: "";
       display: block;
       height: 7px;
@@ -90,8 +90,8 @@
   </style>
   <body>
     <main>
-      <div class="link-wrapper">
-        <a href="https://github.com/canoypa" class="link">
+      <a href="https://github.com/canoypa" class="link">
+        <div class="link-wrapper">
           <div class="link-primary">
             <picture>
               <source type="image/webp" srcset="./assets/logos/github.webp" />
@@ -104,10 +104,10 @@
             </picture>
             <span>GitHub</span>
           </div>
-        </a>
-      </div>
-      <div class="link-wrapper">
-        <a href="https://npmjs.com/~cano" class="link">
+        </div>
+      </a>
+      <a href="https://npmjs.com/~cano" class="link">
+        <div class="link-wrapper">
           <div class="link-primary">
             <picture>
               <source type="image/webp" srcset="./assets/logos/npm.webp" />
@@ -120,10 +120,10 @@
             </picture>
             <span>NPM</span>
           </div>
-        </a>
-      </div>
-      <div class="link-wrapper">
-        <a href="https://qiita.com/canoypa" class="link">
+        </div>
+      </a>
+      <a href="https://qiita.com/canoypa" class="link">
+        <div class="link-wrapper">
           <div class="link-primary">
             <picture>
               <source type="image/webp" srcset="./assets/logos/twitter.webp" />
@@ -136,10 +136,10 @@
             </picture>
             <span>Twitter</span>
           </div>
-        </a>
-      </div>
-      <div class="link-wrapper">
-        <a href="https://twitter.com/canoypa" class="link">
+        </div>
+      </a>
+      <a href="https://twitter.com/canoypa" class="link">
+        <div class="link-wrapper">
           <div class="link-primary">
             <picture>
               <source type="image/webp" srcset="./assets/logos/qiita.webp" />
@@ -152,8 +152,8 @@
             </picture>
             <span>Qiita</span>
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </main>
   </body>
 </html>
