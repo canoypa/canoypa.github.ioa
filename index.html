@@ -35,23 +35,35 @@
       flex-direction: column;
       border: 1px solid #9e9e9e;
       margin: 4px;
-      min-height: 64px;
+      height: 64px;
       border-radius: 4px;
+      overflow: hidden;
       color: #757575;
       background-color: #fff;
       text-decoration: none;
       outline: none;
-      transition: background-color 0.1s ease-out;
+      transition-property: background-color, transform, height;
+      transition-duration: 0.1s;
+      transition-timing-function: ease-out;
+      user-select: none;
+      cursor: pointer;
     }
     .link:hover,
     .link:focus {
+      height: 62px;
+      transform: translateY(2px);
       background-color: #ede7f6;
     }
+    .link:active {
+      height: 56px;
+      transform: translateY(8px);
+    }
     .link-primary {
-      flex: 1;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       padding: 8px 16px;
+      height: 56px;
     }
     picture {
       margin-right: 12px;
@@ -74,7 +86,7 @@
   </style>
   <body>
     <main>
-      <a href="https://github.com/canoypa" class="link">
+      <span href="https://github.com/canoypa" class="link">
         <div class="link-primary">
           <picture>
             <source type="image/webp" srcset="./assets/logos/github.webp" />
@@ -87,8 +99,8 @@
           </picture>
           <span>GitHub</span>
         </div>
-      </a>
-      <a href="https://npmjs.com/~cano" class="link">
+      </span>
+      <span href="https://npmjs.com/~cano" class="link">
         <div class="link-primary">
           <picture>
             <source type="image/webp" srcset="./assets/logos/npm.webp" />
@@ -101,8 +113,8 @@
           </picture>
           <span>NPM</span>
         </div>
-      </a>
-      <a href="https://qiita.com/canoypa" class="link">
+      </span>
+      <span href="https://qiita.com/canoypa" class="link">
         <div class="link-primary">
           <picture>
             <source type="image/webp" srcset="./assets/logos/twitter.webp" />
@@ -115,8 +127,8 @@
           </picture>
           <span>Twitter</span>
         </div>
-      </a>
-      <a href="https://twitter.com/canoypa" class="link">
+      </span>
+      <span href="https://twitter.com/canoypa" class="link">
         <div class="link-primary">
           <picture>
             <source type="image/webp" srcset="./assets/logos/qiita.webp" />
@@ -129,7 +141,7 @@
           </picture>
           <span>Qiita</span>
         </div>
-      </a>
+      </span>
     </main>
   </body>
 </html>
