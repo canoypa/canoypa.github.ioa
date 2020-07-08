@@ -49,18 +49,17 @@
       border-radius: 4px;
       overflow: hidden;
       background-color: #fff;
-      outline: none;
       transition-property: background-color, transform, height;
       transition-duration: 0.1s;
       transition-timing-function: ease-out;
     }
-    .link-wrapper:hover,
-    .link-wrapper:focus {
+    .link:hover > .link-wrapper,
+    .link:focus > .link-wrapper {
       height: 62px;
       transform: translateY(2px);
       background-color: #ede7f6;
     }
-    .link-wrapper:active {
+    .link:active > .link-wrapper {
       height: 56px;
       transform: translateY(8px);
     }
