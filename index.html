@@ -30,9 +30,14 @@
       min-height: 100vh;
     }
 
-    .link {
-      border: 1px solid #9e9e9e;
+    .link-wrapper {
       margin: 4px;
+      height: 64px;
+      overflow: hidden;
+    }
+    .link {
+      display: block;
+      border: 1px solid #9e9e9e;
       height: 64px;
       border-radius: 4px;
       overflow: hidden;
@@ -85,62 +90,70 @@
   </style>
   <body>
     <main>
-      <span href="https://github.com/canoypa" class="link">
-        <div class="link-primary">
-          <picture>
-            <source type="image/webp" srcset="./assets/logos/github.webp" />
-            <img
-              src="./assets/logos/github.png"
-              width="32"
-              height="32"
-              alt="GitHub logo"
-            />
-          </picture>
-          <span>GitHub</span>
-        </div>
-      </span>
-      <span href="https://npmjs.com/~cano" class="link">
-        <div class="link-primary">
-          <picture>
-            <source type="image/webp" srcset="./assets/logos/npm.webp" />
-            <img
-              src="./assets/logos/npm.png"
-              width="32"
-              height="32"
-              alt="NPM logo"
-            />
-          </picture>
-          <span>NPM</span>
-        </div>
-      </span>
-      <span href="https://qiita.com/canoypa" class="link">
-        <div class="link-primary">
-          <picture>
-            <source type="image/webp" srcset="./assets/logos/twitter.webp" />
-            <img
-              src="./assets/logos/twitter.png"
-              width="32"
-              height="32"
-              alt="Twitter logo"
-            />
-          </picture>
-          <span>Twitter</span>
-        </div>
-      </span>
-      <span href="https://twitter.com/canoypa" class="link">
-        <div class="link-primary">
-          <picture>
-            <source type="image/webp" srcset="./assets/logos/qiita.webp" />
-            <img
-              src="./assets/logos/qiita.png"
-              width="32"
-              height="32"
-              alt="Qiita logo"
-            />
-          </picture>
-          <span>Qiita</span>
-        </div>
-      </span>
+      <div class="link-wrapper">
+        <span href="https://github.com/canoypa" class="link">
+          <div class="link-primary">
+            <picture>
+              <source type="image/webp" srcset="./assets/logos/github.webp" />
+              <img
+                src="./assets/logos/github.png"
+                width="32"
+                height="32"
+                alt="GitHub logo"
+              />
+            </picture>
+            <span>GitHub</span>
+          </div>
+        </span>
+      </div>
+      <div class="link-wrapper">
+        <span href="https://npmjs.com/~cano" class="link">
+          <div class="link-primary">
+            <picture>
+              <source type="image/webp" srcset="./assets/logos/npm.webp" />
+              <img
+                src="./assets/logos/npm.png"
+                width="32"
+                height="32"
+                alt="NPM logo"
+              />
+            </picture>
+            <span>NPM</span>
+          </div>
+        </span>
+      </div>
+      <div class="link-wrapper">
+        <span href="https://qiita.com/canoypa" class="link">
+          <div class="link-primary">
+            <picture>
+              <source type="image/webp" srcset="./assets/logos/twitter.webp" />
+              <img
+                src="./assets/logos/twitter.png"
+                width="32"
+                height="32"
+                alt="Twitter logo"
+              />
+            </picture>
+            <span>Twitter</span>
+          </div>
+        </span>
+      </div>
+      <div class="link-wrapper">
+        <span href="https://twitter.com/canoypa" class="link">
+          <div class="link-primary">
+            <picture>
+              <source type="image/webp" srcset="./assets/logos/qiita.webp" />
+              <img
+                src="./assets/logos/qiita.png"
+                width="32"
+                height="32"
+                alt="Qiita logo"
+              />
+            </picture>
+            <span>Qiita</span>
+          </div>
+        </span>
+      </div>
     </main>
   </body>
 </html>
