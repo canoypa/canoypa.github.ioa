@@ -59,42 +59,54 @@
     .link-label {
       display: flex;
       align-items: center;
-      padding: 8px 16px 8px 60px;
+      padding: 8px 16px;
       min-height: 54px;
-      background: 16px 11px / 32px no-repeat;
+    }
+    picture {
+      margin-right: 12px;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+    }
+    .link-logo {
+      width: 100%;
     }
   </style>
   <body>
     <main>
       <a href="https://github.com/canoypa" class="link">
-        <span
-          class="link-label"
-          style="background-image: url(./assets/logos/github.png);"
-        >
+        <span class="link-label">
+          <picture>
+            <source type="image/webp" srcset="./assets/logos/github.webp" />
+            <img class="link-logo" src="./assets/logos/github.png" />
+          </picture>
           GitHub
         </span>
       </a>
       <a href="https://npmjs.com/~cano" class="link">
-        <span
-          class="link-label"
-          style="background-image: url(./assets/logos/npm.png);"
-        >
+        <span class="link-label">
+          <picture>
+            <source type="image/webp" srcset="./assets/logos/npm.webp" />
+            <img class="link-logo" src="./assets/logos/npm.png" />
+          </picture>
           NPM
         </span>
       </a>
       <a href="https://qiita.com/canoypa" class="link">
-        <span
-          class="link-label"
-          style="background-image: url(./assets/logos/twitter.png);"
-        >
+        <span class="link-label">
+          <picture>
+            <source type="image/webp" srcset="./assets/logos/twitter.webp" />
+            <img class="link-logo" src="./assets/logos/twitter.png" />
+          </picture>
           Twitter
         </span>
       </a>
       <a href="https://twitter.com/canoypa" class="link">
-        <span
-          class="link-label"
-          style="background-image: url(./assets/logos/qiita.png);"
-        >
+        <span class="link-label">
+          <picture>
+            <source type="image/webp" srcset="./assets/logos/qiita.webp" />
+            <img class="link-logo" src="./assets/logos/qiita.png" />
+          </picture>
           Qiita
         </span>
       </a>
