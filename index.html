@@ -9,84 +9,85 @@
       content="This is my website.
       Currently, only links to each profile exist."
     />
+
+    <style>
+      :root {
+        font: 16px "Noto Sans";
+        color: #757575;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+
+      main {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 24px;
+        min-height: 100vh;
+      }
+
+      .link {
+        margin: 4px;
+        height: 64px;
+        color: #757575;
+        text-decoration: none;
+        user-select: none;
+        cursor: pointer;
+        outline: none;
+      }
+      .link-wrapper {
+        border: 1px solid #9e9e9e;
+        height: 64px;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #fff;
+        transition-property: background-color, transform, height;
+        transition: 0.1s ease-out;
+      }
+      .link:hover > .link-wrapper,
+      .link:focus > .link-wrapper {
+        height: 62px;
+        transform: translateY(2px);
+        background-color: #ede7f6;
+      }
+      .link:active > .link-wrapper {
+        height: 56px;
+        transform: translateY(8px);
+      }
+      .link-primary {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        height: 54px;
+      }
+      picture {
+        margin-right: 12px;
+        height: 32px;
+        pointer-events: none;
+      }
+      .link-wrapper::after {
+        content: "";
+        display: block;
+        height: 7px;
+        width: 100%;
+        border-top: 1px solid #9e9e9e;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #9e9e9e,
+          #9e9e9e 2px,
+          transparent 2px,
+          transparent 6px
+        );
+      }
+    </style>
   </head>
 
-  <style>
-    :root {
-      font: 16px "Noto Sans";
-      color: #757575;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-    }
-
-    main {
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 24px;
-      min-height: 100vh;
-    }
-
-    .link {
-      margin: 4px;
-      height: 64px;
-      color: #757575;
-      text-decoration: none;
-      user-select: none;
-      cursor: pointer;
-      outline: none;
-    }
-    .link-wrapper {
-      border: 1px solid #9e9e9e;
-      height: 64px;
-      border-radius: 4px;
-      overflow: hidden;
-      background-color: #fff;
-      transition-property: background-color, transform, height;
-      transition: 0.1s ease-out;
-    }
-    .link:hover > .link-wrapper,
-    .link:focus > .link-wrapper {
-      height: 62px;
-      transform: translateY(2px);
-      background-color: #ede7f6;
-    }
-    .link:active > .link-wrapper {
-      height: 56px;
-      transform: translateY(8px);
-    }
-    .link-primary {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      padding: 8px 16px;
-      height: 54px;
-    }
-    picture {
-      margin-right: 12px;
-      height: 32px;
-      pointer-events: none;
-    }
-    .link-wrapper::after {
-      content: "";
-      display: block;
-      height: 7px;
-      width: 100%;
-      border-top: 1px solid #9e9e9e;
-      background-image: repeating-linear-gradient(
-        45deg,
-        #9e9e9e,
-        #9e9e9e 2px,
-        transparent 2px,
-        transparent 6px
-      );
-    }
-  </style>
   <body>
     <main>
       <a href="https://github.com/canoypa" class="link">
