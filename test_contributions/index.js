@@ -14,19 +14,6 @@ const isWithinPeriod = (committedDate, startDate, endDate) => {
   const endTime = endDate.setHours(0, 0, 0, 0);
 
   return endTime < commitTime || commitTime < startTime ? false : true;
-
-  // Debug
-  /* if (
-      committedDate.getFullYear() === 2020 &&
-      committedDate.getMonth() === 6 &&
-      committedDate.getDate() > 7 &&
-      committedDate.getDate() < 11
-    ) {
-      console.log("");
-      console.log(startDate);
-      console.log(endDate);
-      console.log(committedDate);
-    } */
 };
 
 const getContributions = ({ contributions }) => {
