@@ -110,6 +110,8 @@ const getContributions = (contributions, startDate, endDate) => {
 const init = async () => {
   const endDate = new Date();
   endDate.setHours(0, 0, 0, 0);
+  endDate.setDate(endDate.getDate() + 6 - endDate.getDay());
+
   const startDate = new Date();
   startDate.setHours(0, 0, 0, 0);
   startDate.setFullYear(endDate.getFullYear() - 1);
