@@ -1,12 +1,33 @@
 import "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.8/pixi.min.js";
 
-const app = new PIXI.Application({
-  view: document.getElementById("stage"),
-  antialias: true,
-  backgroundColor: 0xffffff,
-});
-
 const userName = "canoypa";
+
+class ContributionsView {
+  app = new PIXI.Application({
+    view: document.getElementById("stage"),
+    antialias: true,
+    backgroundColor: 0xffffff,
+  });
+
+  stage = this.app.stage;
+
+  constructor(contributions) {
+    this.contributions = contributions;
+
+    this.renderBackground();
+
+    this.contributions.forEach((cntr) => {
+      const c = new PIXI.Graphics()
+        .beginFill(cntr.color.replace(/#/, "0x"))
+        .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
+      this.stage.addChild(c);
+    });
+  }
+
+  renderBackground() {
+    // this.stage.addChild();
+  }
+}
 
 const isWithinPeriod = (committedDate, startDate, endDate) => {
   const commitTime = committedDate.setHours(0, 0, 0, 0);
@@ -50,13 +71,6 @@ const init = async () => {
 
   const contributions = getContributions(res);
 
-  console.log(contributions);
-
-  contributions.forEach((cntr) => {
-    const c = new PIXI.Graphics()
-      .beginFill(cntr.color.replace(/#/, "0x"))
-      .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
-    app.stage.addChild(c);
-  });
+  new ContributionsView(contributions);
 };
 init();
