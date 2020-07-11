@@ -54,23 +54,17 @@ const isWithinRange = (date) => {
 };
 
 const getContributions = ({ contributions }) => {
-  const filteredContributions = contributions.filter((cntr) =>
-    isWithinRange(new Date(cntr.date))
-  );
-
-  filteredContributions.reverse();
-
   const result = [];
-  let stack = [];
-  filteredContributions.forEach((cntr) => {
-    stack.push(cntr);
 
-    if (new Date(cntr.date).getDay() === 6) {
-      result.push(stack);
-      stack = [];
-    }
-  });
-  result.push(stack);
+  const filteredContributions = contributions
+    .filter((cntr) => isWithinRange(new Date(cntr.date)))
+    .reverse();
+
+  const cont = filteredContributions.length / 7;
+  for (let i = 0; i < cont; i = (i + 1) | 0) {
+    const slice = filteredContributions.slice(i * 7, i * 7 + 7);
+    result.push(slice);
+  }
 
   return result;
 };
@@ -82,8 +76,10 @@ const init = async () => {
   const res = await req.json();
   console.log(res);
 
+  console.time();
   const contributions = getContributions(res);
   console.log(contributions);
+  console.timeEnd();
 
   const table = document.createElement("div");
   table.classList.add("table");
