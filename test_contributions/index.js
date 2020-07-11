@@ -1,7 +1,5 @@
 import "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.8/pixi.min.js";
 
-console.log(PIXI);
-
 const app = new PIXI.Application({
   view: document.getElementById("stage"),
   antialias: true,
