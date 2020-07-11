@@ -87,7 +87,7 @@ class ContributionsView {
         index = index + 1;
       }
 
-      if (progress <= 1) requestAnimationFrame(render);
+      if (elapsed <= 1) requestAnimationFrame(render);
     };
 
     requestAnimationFrame(render);
