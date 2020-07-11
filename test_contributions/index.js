@@ -79,13 +79,10 @@ const init = async () => {
   const req = await fetch(
     `https://github-contributions-api.now.sh/v1/${userName}`
   );
-
   const res = await req.json();
-
   console.log(res);
 
   const contributions = getContributions(res);
-
   console.log(contributions);
 
   const table = document.createElement("div");
