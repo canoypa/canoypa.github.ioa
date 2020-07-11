@@ -9,22 +9,11 @@ const app = new PIXI.Application({
 const userName = "canoypa";
 
 const isWithinPeriod = (committedDate, startDate, endDate) => {
-  committedDate.setHours(0, 0, 0, 0);
-  startDate.setHours(0, 0, 0, 0);
-  endDate.setHours(0, 0, 0, 0);
+  const commitTime = committedDate.setHours(0, 0, 0, 0);
+  const startTime = startDate.setHours(0, 0, 0, 0);
+  const endTime = endDate.setHours(0, 0, 0, 0);
 
-  const commitTime = committedDate.getTime();
-
-  const endTime = endDate.getTime();
-  // endDate より後のものを排除
-  if (endTime < commitTime) return false;
-
-  const startTime = startDate.getTime();
-  // startDate より前のものを排除
-  if (commitTime < startTime) return false;
-
-  // あとは範囲内
-  return true;
+  return endTime < commitTime || commitTime < startTime ? false : true;
 
   // Debug
   /* if (
