@@ -75,10 +75,9 @@ class ContributionsView {
       })
       .sort((a, b) => a.timing - b.timing);
 
-    let index = 0;
     const cb = new cubicBezier(0.4, 0.0, 0.2, 1);
-    console.log(cb(0), cb(0.5), cb(1));
     const startTime = performance.now();
+    let index = 0;
     const render = (nowTime) => {
       const elapsed = ~~(nowTime - startTime) / 1000;
       const progress = cb(elapsed);
