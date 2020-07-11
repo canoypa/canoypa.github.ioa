@@ -11,8 +11,10 @@ class ContributionsView {
 
   stage = this.app.stage;
 
-  constructor(contributions) {
+  constructor(contributions, startDate, endDate) {
     this.contributions = contributions;
+    this.startDate = startDate;
+    this.endDate = endDate;
 
     this.renderBackground();
 
@@ -71,6 +73,6 @@ const init = async () => {
 
   const contributions = getContributions(res.contributions, startDate, endDate);
 
-  new ContributionsView(contributions);
+  new ContributionsView(contributions, startDate, endDate);
 };
 init();
