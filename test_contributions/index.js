@@ -37,12 +37,7 @@ const isWithinPeriod = (committedDate, startDate, endDate) => {
   return endTime < commitTime || commitTime < startTime ? false : true;
 };
 
-const getContributions = ({ contributions }) => {
-  const endDate = new Date();
-  const startDate = new Date();
-  startDate.setFullYear(endDate.getFullYear() - 1);
-  startDate.setDate(startDate.getDate() - startDate.getDay());
-
+const getContributions = (contributions, startDate, endDate) => {
   return contributions
     .filter(
       (cntr) =>
@@ -63,13 +58,18 @@ const getContributions = ({ contributions }) => {
 };
 
 const init = async () => {
+  const endDate = new Date();
+  const startDate = new Date();
+  startDate.setFullYear(endDate.getFullYear() - 1);
+  startDate.setDate(startDate.getDate() - startDate.getDay());
+
   const req = await fetch(
     `https://github-contributions-api.now.sh/v1/${userName}`
   );
   const res = await req.json();
   console.log(res);
 
-  const contributions = getContributions(res);
+  const contributions = getContributions(res.contributions, startDate, endDate);
 
   new ContributionsView(contributions);
 };
