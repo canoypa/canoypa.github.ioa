@@ -80,7 +80,7 @@ class ContributionsView {
     console.log(cb(0), cb(0.5), cb(1));
     const startTime = performance.now();
     const render = (nowTime) => {
-      const elapsed = ~~(nowTime - startTime) / 1200;
+      const elapsed = ~~(nowTime - startTime) / 1000;
       const progress = cb(elapsed);
 
       while (renderMap[index] && renderMap[index].timing < progress) {
