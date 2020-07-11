@@ -5,7 +5,6 @@ console.log(PIXI);
 const app = new PIXI.Application({
   view: document.getElementById("stage"),
   antialias: true,
-  backgroundColor: 0xeeeeee,
 });
 
 const userName = "canoypa";
@@ -69,10 +68,7 @@ const init = async () => {
   const res = await req.json();
   console.log(res);
 
-  console.time();
   const contributions = getContributions(res);
-  console.log(contributions);
-  console.timeEnd();
 
   contributions.forEach((weekCntrs, weeki) => {
     weekCntrs.forEach((cntr, dayi) => {
