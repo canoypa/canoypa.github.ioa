@@ -73,13 +73,11 @@ const init = async () => {
 
   console.log(contributions);
 
-  contributions.forEach((weekCntrs, weeki) => {
-    weekCntrs.forEach((cntr, dayi) => {
-      const c = new PIXI.Graphics()
-        .beginFill(cntr.color.replace(/#/, "0x"))
-        .drawRoundedRect(weeki * 15, dayi * 15, 11, 11, 2);
-      app.stage.addChild(c);
-    });
+  contributions.forEach((cntr) => {
+    const c = new PIXI.Graphics()
+      .beginFill(cntr.color.replace(/#/, "0x"))
+      .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
+    app.stage.addChild(c);
   });
 };
 init();
