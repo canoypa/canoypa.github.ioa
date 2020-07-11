@@ -17,14 +17,6 @@ app.stage.addChild(c);
 
 const userName = "canoypa";
 
-const getContributionsData = async () => {
-  const res = await fetch(
-    `https://github-contributions-api.now.sh/v1/${userName}`
-  );
-
-  return res.json();
-};
-
 const isWithinRange = (date) => {
   const commitDate = new Date(date.setHours(0, 0, 0, 0));
   const commitTime = commitDate.getTime();
@@ -84,7 +76,12 @@ const getContributions = ({ contributions }) => {
 };
 
 const init = async () => {
-  const res = await getContributionsData();
+  const req = await fetch(
+    `https://github-contributions-api.now.sh/v1/${userName}`
+  );
+
+  const res = await req.json();
+
   console.log(res);
 
   const contributions = getContributions(res);
