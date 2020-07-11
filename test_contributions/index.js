@@ -27,7 +27,21 @@ class ContributionsView {
   }
 
   renderBackground() {
-    // this.stage.addChild();
+    const weekLen = ~~(
+      (this.endDate - this.startDate) /
+      (24 * 60 * 60 * 1000) /
+      7
+    );
+
+    for (let week = 0; week < weekLen; week = (week + 1) | 0) {
+      for (let day = 0; day < 7; day = (day + 1) | 0) {
+        const c = new PIXI.Graphics()
+          .beginFill(0xebedf0)
+          .drawRoundedRect(week * 15, day * 15, 11, 11, 2);
+
+        this.stage.addChild(c);
+      }
+    }
   }
 }
 
