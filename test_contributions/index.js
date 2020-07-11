@@ -17,7 +17,7 @@ app.stage.addChild(c);
 
 const userName = "canoypa";
 
-const isWithinRange = (date) => {
+const isWithinPeriod = (date) => {
   const commitDate = new Date(date.setHours(0, 0, 0, 0));
   const commitTime = commitDate.getTime();
 
@@ -57,7 +57,7 @@ const getContributions = ({ contributions }) => {
   const result = [];
 
   const filteredContributions = contributions
-    .filter((cntr) => isWithinRange(new Date(cntr.date)))
+    .filter((cntr) => isWithinPeriod(new Date(cntr.date)))
     .reverse();
 
   const cont = filteredContributions.length / 7;
