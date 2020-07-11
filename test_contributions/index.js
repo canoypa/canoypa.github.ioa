@@ -2,6 +2,24 @@ import "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.8/pixi.min.js";
 
 const userName = "canoypa";
 
+function cubicBezier(...b) {
+  this.b = [
+    [0, 0],
+    [b[0], b[1]],
+    [b[2], b[3]],
+    [1, 1],
+  ];
+
+  this.p = (t, b = this.b) => {
+    if (b.length === 1) return b[0];
+    const left = this.p(t, b.slice(0, b.length - 1));
+    const right = this.p(t, b.slice(1, b.length));
+    return [(1 - t) * left[0] + t * right[0], (1 - t) * left[1] + t * right[1]];
+  };
+
+  return (t) => this.p(t)[1];
+}
+
 class ContributionsView {
   app = new PIXI.Application({
     view: document.getElementById("stage"),
@@ -58,13 +76,12 @@ class ContributionsView {
       .sort((a, b) => a.timing - b.timing);
 
     let index = 0;
+    const cb = new cubicBezier(0.4, 0.0, 0.2, 1);
+    console.log(cb(0), cb(0.5), cb(1));
     const startTime = performance.now();
     const render = (nowTime) => {
       const elapsed = ~~(nowTime - startTime) / 1200;
-      const progress = ((t) =>
-        t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1)(
-        elapsed
-      );
+      const progress = cb(elapsed);
 
       while (renderMap[index] && renderMap[index].timing < progress) {
         this.stage.addChild(renderMap[index].view);
