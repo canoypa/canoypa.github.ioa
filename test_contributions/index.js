@@ -27,7 +27,7 @@ class ContributionsView {
       7
     );
 
-    for (let week = 0; week < weekLen; week = (week + 1) | 0) {
+    for (let week = 0; week <= weekLen; week = (week + 1) | 0) {
       for (let day = 0; day < 7; day = (day + 1) | 0) {
         const c = new PIXI.Graphics()
           .beginFill(0xebedf0)
