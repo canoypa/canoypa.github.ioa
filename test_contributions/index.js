@@ -49,7 +49,6 @@ const getContributions = ({ contributions }) => {
 
   return contributions
     .filter((cntr) => cntr.count > 0 && isWithinPeriod(new Date(cntr.date)))
-    .reverse()
     .map((cntr) => {
       const committedDate = new Date(cntr.date);
 
@@ -59,7 +58,8 @@ const getContributions = ({ contributions }) => {
         week: ~~((committedDate - startDate) / (24 * 60 * 60 * 1000) / 7),
         day: committedDate.getDay(),
       };
-    });
+    })
+    .reverse();
 };
 
 const init = async () => {
