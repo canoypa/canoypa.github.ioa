@@ -75,7 +75,7 @@ const init = async () => {
     weekCntrs.forEach((cntr, dayi) => {
       const c = new PIXI.Graphics()
         .beginFill(cntr.color.replace(/#/, "0x"))
-        .drawRoundedRect(weeki * 15, dayi * 15, 11, 11, 4);
+        .drawRoundedRect(weeki * 15, dayi * 15, 11, 11, 2);
       app.stage.addChild(c);
     });
   });
