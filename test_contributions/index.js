@@ -8,21 +8,17 @@ const app = new PIXI.Application({
 
 const userName = "canoypa";
 
-const isWithinPeriod = (date) => {
-  const commitDate = new Date(date.setHours(0, 0, 0, 0));
-  const commitTime = commitDate.getTime();
+const isWithinPeriod = (committedDate, startDate, endDate) => {
+  committedDate.setHours(0, 0, 0, 0);
+  startDate.setHours(0, 0, 0, 0);
+  endDate.setHours(0, 0, 0, 0);
 
-  const endDate = new Date(new Date().setHours(0, 0, 0, 0));
+  const commitTime = committedDate.getTime();
+
   const endTime = endDate.getTime();
   // endDate より後のものを排除
   if (endTime < commitTime) return false;
 
-  const yearAgo = new Date(
-    new Date(endDate).setFullYear(endDate.getFullYear() - 1)
-  );
-  const startDate = new Date(
-    new Date(yearAgo).setDate(yearAgo.getDate() - yearAgo.getDay())
-  );
   const startTime = startDate.getTime();
   // startDate より前のものを排除
   if (commitTime < startTime) return false;
@@ -45,10 +41,17 @@ const isWithinPeriod = (date) => {
 };
 
 const getContributions = ({ contributions }) => {
-  const startDate = new Date(2019, 6, 7);
+  const endDate = new Date();
+  const startDate = new Date();
+  startDate.setFullYear(endDate.getFullYear() - 1);
+  startDate.setDate(startDate.getDate() - startDate.getDay());
 
   return contributions
-    .filter((cntr) => cntr.count > 0 && isWithinPeriod(new Date(cntr.date)))
+    .filter(
+      (cntr) =>
+        cntr.count > 0 &&
+        isWithinPeriod(new Date(cntr.date), startDate, endDate)
+    )
     .map((cntr) => {
       const committedDate = new Date(cntr.date);
 
