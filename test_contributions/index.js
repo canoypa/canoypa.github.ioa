@@ -17,13 +17,7 @@ class ContributionsView {
     this.endDate = endDate;
 
     this.renderBackground();
-
-    this.contributions.forEach((cntr) => {
-      const c = new PIXI.Graphics()
-        .beginFill(cntr.color.replace(/#/, "0x"))
-        .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
-      this.stage.addChild(c);
-    });
+    this.renderContribution();
   }
 
   renderBackground() {
@@ -42,6 +36,45 @@ class ContributionsView {
         this.stage.addChild(c);
       }
     }
+  }
+
+  renderContribution() {
+    const weekLen =
+      ~~((this.endDate - this.startDate) / (24 * 60 * 60 * 1000) / 7) +
+      6 * 2 +
+      1;
+
+    const renderMap = this.contributions
+      .map((cntr) => {
+        const c = new PIXI.Graphics()
+          .beginFill(cntr.color.replace(/#/, "0x"))
+          .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
+
+        return {
+          view: c,
+          timing: (cntr.week + cntr.day * 2 + 1) / weekLen,
+        };
+      })
+      .sort((a, b) => a.timing - b.timing);
+
+    let index = 0;
+    const startTime = performance.now();
+    const render = (nowTime) => {
+      const elapsed = ~~(nowTime - startTime) / 1200;
+      const progress = ((t) =>
+        t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1)(
+        elapsed
+      );
+
+      while (renderMap[index] && renderMap[index].timing < progress) {
+        this.stage.addChild(renderMap[index].view);
+        index = index + 1;
+      }
+
+      if (progress <= 1) requestAnimationFrame(render);
+    };
+
+    requestAnimationFrame(render);
   }
 }
 
@@ -80,7 +113,8 @@ const init = async () => {
   startDate.setDate(startDate.getDate() - startDate.getDay());
 
   const req = await fetch(
-    `https://github-contributions-api.now.sh/v1/${userName}`
+    `https://github-contributions-api.now.sh/v1/${userName}`,
+    { cache: "force-cache" }
   );
   const res = await req.json();
   console.log(res);
