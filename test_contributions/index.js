@@ -79,9 +79,9 @@ class ContributionsView {
 }
 
 const isWithinPeriod = (committedDate, startDate, endDate) => {
-  const commitTime = committedDate.setHours(0, 0, 0, 0);
-  const startTime = startDate.setHours(0, 0, 0, 0);
-  const endTime = endDate.setHours(0, 0, 0, 0);
+  const commitTime = committedDate.getTime();
+  const startTime = startDate.getTime();
+  const endTime = endDate.getTime();
 
   return endTime < commitTime || commitTime < startTime ? false : true;
 };
@@ -95,6 +95,7 @@ const getContributions = (contributions, startDate, endDate) => {
     )
     .map((cntr) => {
       const committedDate = new Date(cntr.date);
+      committedDate.setHours(0, 0, 0, 0);
 
       return {
         count: cntr.count,
@@ -108,7 +109,9 @@ const getContributions = (contributions, startDate, endDate) => {
 
 const init = async () => {
   const endDate = new Date();
+  endDate.setHours(0, 0, 0, 0);
   const startDate = new Date();
+  startDate.setHours(0, 0, 0, 0);
   startDate.setFullYear(endDate.getFullYear() - 1);
   startDate.setDate(startDate.getDate() - startDate.getDay());
 
