@@ -45,19 +45,21 @@ const isWithinPeriod = (date) => {
 };
 
 const getContributions = ({ contributions }) => {
-  const result = [];
+  const startDate = new Date(2019, 6, 7);
 
-  const filteredContributions = contributions
-    .filter((cntr) => isWithinPeriod(new Date(cntr.date)))
-    .reverse();
+  return contributions
+    .filter((cntr) => cntr.count > 0 && isWithinPeriod(new Date(cntr.date)))
+    .reverse()
+    .map((cntr) => {
+      const committedDate = new Date(cntr.date);
 
-  const cont = filteredContributions.length / 7;
-  for (let i = 0; i < cont; i = (i + 1) | 0) {
-    const slice = filteredContributions.slice(i * 7, i * 7 + 7);
-    result.push(slice);
-  }
-
-  return result;
+      return {
+        count: cntr.count,
+        color: cntr.color,
+        week: ~~((committedDate - startDate) / (24 * 60 * 60 * 1000) / 7),
+        day: committedDate.getDay(),
+      };
+    });
 };
 
 const init = async () => {
@@ -68,6 +70,8 @@ const init = async () => {
   console.log(res);
 
   const contributions = getContributions(res);
+
+  console.log(contributions);
 
   contributions.forEach((weekCntrs, weeki) => {
     weekCntrs.forEach((cntr, dayi) => {
