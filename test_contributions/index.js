@@ -8,13 +8,6 @@ const app = new PIXI.Application({
   backgroundColor: 0xeeeeee,
 });
 
-const c = new PIXI.Graphics()
-  .beginFill(0x216e39)
-  .drawRoundedRect(100, 100, 11, 11, 4);
-console.log(c);
-
-app.stage.addChild(c);
-
 const userName = "canoypa";
 
 const isWithinPeriod = (date) => {
@@ -81,27 +74,13 @@ const init = async () => {
   console.log(contributions);
   console.timeEnd();
 
-  const table = document.createElement("div");
-  table.classList.add("table");
   contributions.forEach((weekCntrs, weeki) => {
-    const week = document.createElement("div");
-    week.classList.add("week");
-
     weekCntrs.forEach((cntr, dayi) => {
-      const cntrelm = document.createElement("div");
-      cntrelm.classList.add("day");
-      cntrelm.style.backgroundColor = cntr.color;
-      week.appendChild(cntrelm);
-
       const c = new PIXI.Graphics()
         .beginFill(cntr.color.replace(/#/, "0x"))
         .drawRoundedRect(weeki * 15, dayi * 15, 11, 11, 4);
       app.stage.addChild(c);
     });
-
-    table.appendChild(week);
   });
-
-  document.body.appendChild(table);
 };
 init();
