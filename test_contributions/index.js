@@ -5,6 +5,7 @@ console.log(PIXI);
 const app = new PIXI.Application({
   view: document.getElementById("stage"),
   antialias: true,
+  backgroundColor: 0xffffff,
 });
 
 const userName = "canoypa";
