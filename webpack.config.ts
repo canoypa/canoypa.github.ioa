@@ -4,6 +4,7 @@ import HTMLWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HardSourceWebpackPlugin from "hard-source-webpack-plugin";
 import sass from "sass";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 type BuildEnv = {
   mode: string;
@@ -80,6 +81,9 @@ const createConfig = (env: BuildEnv) => {
       new HardSourceWebpackPlugin.ExcludeModulePlugin([
         { test: /mini-css-extract-plugin[\\/]dist[\\/]loader/ },
       ]),
+      new CopyWebpackPlugin({
+        patterns: [{ from: "src/assets", to: "assets" }],
+      }),
     ],
   };
 };
