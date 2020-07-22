@@ -1,0 +1,21 @@
+:root {
+  font: 16px "Noto Sans";
+  color: #757575;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 24px;
+  min-height: 100vh;
+}
