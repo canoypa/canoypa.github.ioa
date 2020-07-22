@@ -2,6 +2,11 @@
   "private": true,
   "name": "canoypa.github.io",
   "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --env.mode=prod",
+    "build:dev": "webpack --env.mode=dev",
+    "start": "webpack-dev-server --env.mode=dev"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
