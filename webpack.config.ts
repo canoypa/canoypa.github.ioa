@@ -74,16 +74,16 @@ const createConfig = (env: BuildEnv) => {
     resolve: { extensions: [".js", ".ts", ".tsx"] },
 
     plugins: [
+      new CopyWebpackPlugin({
+        patterns: [{ from: "src/assets", to: "assets" }],
+      }),
       new HTMLWebpackPlugin({ template: "src/index.html", inject: false }),
       new MiniCssExtractPlugin(),
-      new CleanWebpackPlugin(),
       new HardSourceWebpackPlugin(),
       new HardSourceWebpackPlugin.ExcludeModulePlugin([
         { test: /mini-css-extract-plugin[\\/]dist[\\/]loader/ },
       ]),
-      new CopyWebpackPlugin({
-        patterns: [{ from: "src/assets", to: "assets" }],
-      }),
+      new CleanWebpackPlugin(),
     ],
   };
 };
