@@ -1,46 +1,72 @@
 import PIXI from "pixi.js";
 
+type IContributionsAPI = {
+  years: IContributionsAPIYears;
+  contributions: IContributionsAPIContributions;
+};
+type IContributionsAPIYears = Record<
+  number,
+  {
+    year: string;
+    total: number;
+    range: Record<"start" | "end", string>;
+  }
+>;
+type IContributionsAPIContributions = Array<{
+  date: string;
+  count: number;
+  color: string;
+  intensity: number;
+}>;
+
+type IContributions = Array<{
+  count: number;
+  color: string;
+  week: number;
+  day: number;
+}>;
+
 const userName = "canoypa";
 
-function cubicBezier(...b) {
-  this.b = [
+function cubicBezier(...b: number[]) {
+  const _b: [number, number][] = [
     [0, 0],
     [b[0], b[1]],
     [b[2], b[3]],
     [1, 1],
   ];
 
-  this.p = (t, b = this.b) => {
+  const p = (t: number, b = _b): [number, number] => {
     if (b.length === 1) return b[0];
-    const left = this.p(t, b.slice(0, b.length - 1));
-    const right = this.p(t, b.slice(1, b.length));
+    const left = p(t, b.slice(0, b.length - 1));
+    const right = p(t, b.slice(1, b.length));
     return [(1 - t) * left[0] + t * right[0], (1 - t) * left[1] + t * right[1]];
   };
 
-  return (t) => this.p(t)[1];
+  return (t: number) => p(t)[1];
 }
 
 class ContributionsView {
   app = new PIXI.Application({
-    view: document.getElementById("stage"),
+    view: document.getElementById("stage")! as HTMLCanvasElement,
     antialias: true,
     backgroundColor: 0xffffff,
   });
 
   stage = this.app.stage;
 
-  constructor(contributions, startDate, endDate) {
-    this.contributions = contributions;
-    this.startDate = startDate;
-    this.endDate = endDate;
-
+  constructor(
+    private contributions: IContributions,
+    private startDate: Date,
+    private endDate: Date
+  ) {
     this.renderBackground();
     this.renderContribution();
   }
 
   renderBackground() {
     const weekLen = ~~(
-      (this.endDate - this.startDate) /
+      (this.endDate.getTime() - this.startDate.getTime()) /
       (24 * 60 * 60 * 1000) /
       7
     );
@@ -58,14 +84,18 @@ class ContributionsView {
 
   renderContribution() {
     const weekLen =
-      ~~((this.endDate - this.startDate) / (24 * 60 * 60 * 1000) / 7) +
+      ~~(
+        (this.endDate.getTime() - this.startDate.getTime()) /
+        (24 * 60 * 60 * 1000) /
+        7
+      ) +
       6 * 2 +
       1;
 
     const renderMap = this.contributions
       .map((cntr) => {
         const c = new PIXI.Graphics()
-          .beginFill(cntr.color.replace(/#/, "0x"))
+          .beginFill(Number(cntr.color.replace(/#/, "0x")))
           .drawRoundedRect(cntr.week * 15, cntr.day * 15, 11, 11, 2);
 
         return {
@@ -75,10 +105,10 @@ class ContributionsView {
       })
       .sort((a, b) => a.timing - b.timing);
 
-    const cb = new cubicBezier(0.4, 0.0, 0.2, 1);
+    const cb = cubicBezier(0.4, 0.0, 0.2, 1);
     const startTime = performance.now();
     let index = 0;
-    const render = (nowTime) => {
+    const render = (nowTime: number) => {
       const elapsed = ~~(nowTime - startTime) / 1000;
       const progress = cb(elapsed);
 
@@ -94,7 +124,11 @@ class ContributionsView {
   }
 }
 
-const isWithinPeriod = (committedDate, startDate, endDate) => {
+const isWithinPeriod = (
+  committedDate: Date,
+  startDate: Date,
+  endDate: Date
+) => {
   const commitTime = committedDate.getTime();
   const startTime = startDate.getTime();
   const endTime = endDate.getTime();
@@ -102,7 +136,11 @@ const isWithinPeriod = (committedDate, startDate, endDate) => {
   return endTime < commitTime || commitTime < startTime ? false : true;
 };
 
-const getContributions = (contributions, startDate, endDate) => {
+const getContributions = (
+  contributions: IContributionsAPIContributions,
+  startDate: Date,
+  endDate: Date
+): IContributions => {
   return contributions
     .filter(
       (cntr) =>
@@ -116,7 +154,11 @@ const getContributions = (contributions, startDate, endDate) => {
       return {
         count: cntr.count,
         color: cntr.color,
-        week: ~~((committedDate - startDate) / (24 * 60 * 60 * 1000) / 7),
+        week: ~~(
+          (committedDate.getTime() - startDate.getTime()) /
+          (24 * 60 * 60 * 1000) /
+          7
+        ),
         day: committedDate.getDay(),
       };
     })
@@ -137,7 +179,7 @@ const init = async () => {
     `https://github-contributions-api.now.sh/v1/${userName}`,
     { cache: "force-cache" }
   );
-  const res = await req.json();
+  const res: IContributionsAPI = await req.json();
   console.log(res);
 
   const contributions = getContributions(res.contributions, startDate, endDate);
