@@ -1,4 +1,4 @@
-import "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.8/pixi.min.js";
+import PIXI from "pixi.js";
 
 const userName = "canoypa";
 
