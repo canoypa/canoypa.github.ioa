@@ -5,6 +5,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HardSourceWebpackPlugin from "hard-source-webpack-plugin";
 import sass from "sass";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import PrerenderPlugin from "./scripts/webpack-plugins/prerender";
 
 type BuildEnv = {
   mode: string;
@@ -84,6 +85,7 @@ const createConfig = (env: BuildEnv) => {
         { test: /mini-css-extract-plugin[\\/]dist[\\/]loader/ },
       ]),
       new CleanWebpackPlugin(),
+      new PrerenderPlugin(),
     ],
   };
 };
