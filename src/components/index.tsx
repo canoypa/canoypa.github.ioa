@@ -1,5 +1,5 @@
 import { FC, h } from "preact";
-import { SocialButton } from "./SocialButton";
+import { SocialButton } from "./social-button";
 import styles from "./styles.scss";
 
 export const App: FC = () => (
