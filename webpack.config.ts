@@ -1,10 +1,10 @@
-import { resolve } from "path";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import HardSourceWebpackPlugin from "hard-source-webpack-plugin";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import HardSourceWebpackPlugin from "hard-source-webpack-plugin";
+import { resolve } from "path";
 import sass from "sass";
-import CopyWebpackPlugin from "copy-webpack-plugin";
 import PrerenderPlugin from "./scripts/webpack-plugins/prerender";
 
 type BuildEnv = {
@@ -17,7 +17,7 @@ const createConfig = (env: BuildEnv) => {
   return {
     mode: isProd ? "production" : "development",
 
-    output: { filename: "[name].js", path: resolve("build") },
+    output: { filename: "[name].js", path: resolve("docs") },
 
     entry: {
       index: resolve("./src/index.tsx"),
