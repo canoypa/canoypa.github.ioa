@@ -1,25 +1,25 @@
 import { FunctionComponent, h } from "preact";
 import styles from "./styles.scss";
 
-type socialTypes = Record<string, Record<"name" | "link" | "srcname", string>>;
+type socialTypes = Record<string, Record<"label" | "link" | "srcname", string>>;
 const socialTypes: socialTypes = {
   GitHub: {
-    name: "GitHub",
+    label: "GitHub",
     link: "https://github.com/canoypa",
     srcname: "github",
   },
   NPM: {
-    name: "NPM",
+    label: "NPM",
     link: "https://npmjs.com/~cano",
     srcname: "npm",
   },
   Qiita: {
-    name: "Qiita",
+    label: "Qiita",
     link: "https://qiita.com/canoypa",
     srcname: "qiita",
   },
   Twitter: {
-    name: "Twitter",
+    label: "Twitter",
     link: "https://twitter.com/canoypa",
     srcname: "twitter",
   },
@@ -44,10 +44,10 @@ export const SocialButton: FunctionComponent<Props> = ({ type }) => {
               src={`./assets/logos/${social.srcname}.png`}
               width="32"
               height="32"
-              alt={`${social.name} logo`}
+              alt={`${social.label} logo`}
             />
           </picture>
-          <span>{social.name}</span>
+          <span>{social.label}</span>
         </div>
       </div>
     </a>
