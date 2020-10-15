@@ -1,4 +1,4 @@
-import { h, FunctionComponent } from "preact";
+import { FunctionComponent, h } from "preact";
 import styles from "./styles.scss";
 
 type socialTypes = Record<string, Record<"name" | "link" | "srcname", string>>;
