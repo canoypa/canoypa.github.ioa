@@ -1,4 +1,4 @@
-import { FC, h } from "preact";
+import { FunctionComponent as FC, h } from "preact";
 import { SocialButton } from "./social-button";
 import styles from "./styles.scss";
 

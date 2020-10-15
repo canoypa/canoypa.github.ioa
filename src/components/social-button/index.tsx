@@ -1,4 +1,4 @@
-import { FunctionComponent, h } from "preact";
+import { FunctionComponent as FC, h } from "preact";
 import styles from "./styles.scss";
 
 const socialTypes = {
@@ -29,7 +29,7 @@ type SocialTypeKeys = keyof typeof socialTypes;
 type Props = {
   type: SocialTypeKeys;
 };
-export const SocialButton: FunctionComponent<Props> = ({ type }) => {
+export const SocialButton: FC<Props> = ({ type }) => {
   const social = socialTypes[type];
 
   return (
