@@ -1,8 +1,7 @@
 import { FunctionComponent, h } from "preact";
 import styles from "./styles.scss";
 
-type socialTypes = Record<string, Record<"label" | "link" | "srcName", string>>;
-const socialTypes: socialTypes = {
+const socialTypes = {
   GitHub: {
     label: "GitHub",
     link: "https://github.com/canoypa",
@@ -23,10 +22,12 @@ const socialTypes: socialTypes = {
     link: "https://twitter.com/canoypa",
     srcName: "twitter",
   },
-};
+} as const;
+
+type SocialTypeKeys = keyof typeof socialTypes;
 
 type Props = {
-  type: string;
+  type: SocialTypeKeys;
 };
 export const SocialButton: FunctionComponent<Props> = ({ type }) => {
   const social = socialTypes[type];
