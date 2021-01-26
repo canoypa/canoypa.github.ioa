@@ -39,10 +39,10 @@ export const SocialButton: FC<Props> = ({ type }) => {
           <picture class={styles.picture}>
             <source
               type="image/webp"
-              srcset={`./assets/logos/${social.srcName}.webp`}
+              srcset={`./_/assets/logos/${social.srcName}.webp`}
             />
             <img
-              src={`./assets/logos/${social.srcName}.png`}
+              src={`./_/assets/logos/${social.srcName}.png`}
               width="32"
               height="32"
               alt={`${social.label} logo`}

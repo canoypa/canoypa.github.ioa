@@ -76,7 +76,7 @@ const createConfig = (env: BuildEnv) => {
 
     plugins: [
       new CopyWebpackPlugin({
-        patterns: [{ from: "src/assets", to: "assets" }],
+        patterns: [{ from: "src/_", to: "_" }],
       }),
       new HTMLWebpackPlugin({ template: "src/index.html", inject: false }),
       new MiniCssExtractPlugin(),
