@@ -45,7 +45,6 @@ export const SocialButton: FC<Props> = ({ type }) => {
               src={`./_/assets/logos/${social.srcName}.png`}
               width="32"
               height="32"
-              alt={`${social.label} logo`}
             />
           </picture>
           <span>{social.label}</span>
