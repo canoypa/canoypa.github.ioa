@@ -1,4 +1,4 @@
-.link {
+.main {
   display: flex;
   align-items: flex-end;
   margin: 4px;
@@ -7,9 +7,10 @@
   text-decoration: none;
   user-select: none;
   cursor: pointer;
+  outline: none;
 }
 
-.wrapper {
+.container {
   border: 1px solid #9e9e9e;
   height: 64px;
   border-radius: 4px;
@@ -32,14 +33,15 @@
     );
   }
 }
-.link:hover .wrapper,
-.link:focus .wrapper {
+
+.main:hover .container,
+.main:focus .container {
   background-color: #ede7f6;
 }
-.link:hover .wrapper {
+.main:hover .container {
   height: 62px;
 }
-.link:active .wrapper {
+.main:active .container {
   height: 56px;
 }
 
@@ -50,7 +52,7 @@
   height: 54px;
 }
 
-.picture {
+.logo {
   margin-right: 12px;
   height: 32px;
   pointer-events: none;
