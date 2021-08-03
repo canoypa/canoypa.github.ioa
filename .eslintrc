@@ -1,0 +1,7 @@
+{
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    // static export では Image コンポーネントが使えないため
+    "@next/next/no-img-element": "off"
+  }
+}
