@@ -4,9 +4,21 @@ import styles from "./styles.module.scss";
 
 export const SocialButtonList: FC = () => (
   <div className={styles.main}>
-    <SocialButton type="GitHub" />
-    <SocialButton type="NPM" />
-    <SocialButton type="Qiita" />
-    <SocialButton type="Twitter" />
+    <SocialButton
+      label="GitHub"
+      link="https://github.com/canoypa"
+      srcName="github"
+    />
+    <SocialButton label="NPM" link="https://npmjs.com/~cano" srcName="npm" />
+    <SocialButton
+      label="Qiita"
+      link="https://qiita.com/canoypa"
+      srcName="qiita"
+    />
+    <SocialButton
+      label="Twitter"
+      link="https://twitter.com/canoypa"
+      srcName="twitter"
+    />
   </div>
 );
