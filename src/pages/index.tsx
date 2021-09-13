@@ -1,6 +1,6 @@
+import { Box } from "@mui/material";
 import Head from "next/head";
 import { SocialButtonList } from "../components/SocialButtonList";
-import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
@@ -14,9 +14,15 @@ export default function Home() {
         />
       </Head>
 
-      <main className={styles.main}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        p={3}
+        height="100vh"
+      >
         <SocialButtonList />
-      </main>
+      </Box>
     </div>
   );
 }

@@ -1,9 +1,9 @@
+import { Box } from "@mui/material";
 import { FC } from "react";
 import { SocialButton } from "../SocialButton";
-import styles from "./styles.module.scss";
 
 export const SocialButtonList: FC = () => (
-  <div className={styles.main}>
+  <Box display="flex" justifyContent="center" flexWrap="wrap" gap={1}>
     <SocialButton
       label="GitHub"
       link="https://github.com/canoypa"
@@ -20,5 +20,5 @@ export const SocialButtonList: FC = () => (
       link="https://twitter.com/canoypa"
       srcName="twitter"
     />
-  </div>
+  </Box>
 );
