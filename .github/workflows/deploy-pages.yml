@@ -34,7 +34,7 @@ jobs:
       - run: npm run export
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: build
+          path: ./out
 
   deploy:
     needs: build
