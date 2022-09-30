@@ -10,6 +10,7 @@ export const SocialButtonList: FC = () => (
       srcName="github"
     />
     <SocialButton label="NPM" link="https://npmjs.com/~cano" srcName="npm" />
+    <SocialButton label="Zenn" link="https://zenn.dev/canoypa" srcName="zenn" />
     <SocialButton
       label="Qiita"
       link="https://qiita.com/canoypa"
